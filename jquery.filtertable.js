@@ -31,6 +31,7 @@
 				hideTFootOnFilter: false,               // if true, the table's tfoot(s) will be hidden when the table is filtered
 				highlightClass:    'alt',               // class applied to cells containing the filter term
 				inputName:         '',                  // name of filter input field
+        inputClass:        '',                  // class for input tag
 				inputType:         'search',            // tag name of the filter input tag
 				label:             'Filter:',           // text to precede the filter input tag
 				minRows:           8,                   // don't show the filter on tables with less than this number of rows
@@ -78,7 +79,7 @@
 					container.addClass(settings.containerClass);
 				}
 				container.prepend(settings.label+' '); // add the label for the filter field
-				filter = $('<input type="'+settings.inputType+'" placeholder="'+settings.placeholder+'" name="'+settings.inputName+'" />'); // build the filter field
+				filter = $('<input type="'+settings.inputType+'" placeholder="'+settings.placeholder+'" name="'+settings.inputName+'" class="'+settings.inputClass+'" />'); // build the filter field
 				if ($.fn.bindWithDelay) { // does bindWithDelay() exist?
 					filter.bindWithDelay('keyup', function() { // bind doFiltering() to keyup (delayed)
 						doFiltering(t, $(this).val());
