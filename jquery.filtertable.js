@@ -27,6 +27,7 @@
 				callback:          null,                // callback function: function(term, table){}
 				containerClass:    'filter-table',      // class to apply to the container
 				containerTag:      'p',                 // tag name of the container
+        containerWrapper:  '',                  // jquery selector where container will go
 				hideTFootOnFilter: false,               // if true, the table's tfoot(s) will be hidden when the table is filtered
 				highlightClass:    'alt',               // class applied to cells containing the filter term
 				inputName:         '',                  // name of filter input field
@@ -109,6 +110,11 @@
 						container.append(quicks); // add the quick list groups container to the DOM if it isn't already there
 					}
 				} // if quick list items
+        if (settings.containerWrapper!=='') {
+         $(settings.containerWrapper).append(container)
+        } else {
+          t.before(container); // add the filter field and quick list container to just before the table
+        }
 				t.before(container); // add the filter field and quick list container to just before the table
 			} // if the functionality should be added
 		}); // return this.each
